@@ -1,0 +1,3 @@
+debug: true
+service: ipay-api
+httpport: 8080
