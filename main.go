@@ -29,7 +29,6 @@ var (
 func main() {
 	appEnv := flag.String("app-env", os.Getenv("APP_ENV"), "app env")
 	ipayConnEnv := flag.String("IPAY_CONN", os.Getenv("IPAY_CONN"), "IPAY_CONN")
-	ipayConnDemoEnv := flag.String("DEMO_IPAY_CONN", os.Getenv("DEMO_IPAY_CONN"), "DEMO_IPAY_CONN")
 	hostUrl := flag.String("IPAY_HOST", os.Getenv("IPAY_HOST"), "IPAY_HOST")
 	jwtEnv := flag.String("JWT_SECRET", os.Getenv("JWT_SECRET"), "JWT_SECRET")
 
@@ -40,11 +39,7 @@ func main() {
 	}
 
 	fmt.Println(c)
-	connEnv := *ipayConnEnv
-	if *appEnv == "demo" {
-		connEnv = *ipayConnDemoEnv
-	}
-	db, err := initDB("mysql", connEnv)
+	db, err := initDB("mysql", *ipayConnEnv)
 	if err != nil {
 		panic(err)
 	}
