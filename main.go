@@ -99,6 +99,7 @@ func main() {
 	handleWithFilter = func(handlerFunc echo.HandlerFunc, c echo.Context) error {
 		return setContextValueMiddleware(handlerFunc)(c)
 	}
+	e.Use(setContextValueMiddleware)
 
 	if err := e.Start(":" + c.HttpPort); err != nil {
 		log.Println(err)
