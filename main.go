@@ -55,17 +55,16 @@ func main() {
 		return c.File("./swagger.yml")
 	})
 	e.Static("/docs", "./swagger-ui")
-	apiVersion := "/v3"
-	e.GET(apiVersion, controllers.RouterController{}.Get)
-	e.POST(apiVersion, controllers.RouterController{}.Post)
-	e.GET(apiVersion+"/jwt", controllers.RouterController{}.Get)
-	e.POST(apiVersion+"/jwt", controllers.RouterController{}.Post)
+	e.GET("/", controllers.RouterController{}.Get)
+	e.POST("/", controllers.RouterController{}.Post)
+	e.GET("/jwt", controllers.RouterController{}.Get)
+	e.POST("/jwt", controllers.RouterController{}.Post)
 
 	e.Use(middleware.JWTWithConfig(middleware.JWTConfig{
 		SigningKey: []byte(*jwtEnv),
 		Skipper: func(c echo.Context) bool {
 			ignore := []string{
-				apiVersion + "/jwt",
+				"/jwt",
 			}
 
 			for _, i := range ignore {
