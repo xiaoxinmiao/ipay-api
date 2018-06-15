@@ -94,7 +94,7 @@ func main() {
 
 	configMap := map[string]interface{}{
 		"NOTIFY_BODY_SEP1": "&",
-		"NOTIFY_BODY_SEP2": "||||",
+		"NOTIFY_BODY_SEP2": "|",
 		"IPAY_HOST":        *hostUrl,
 		"JWT_SECRET":       *jwtEnv,
 	}
