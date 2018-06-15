@@ -60,8 +60,8 @@ func main() {
 	v3.POST("", controllers.RouterController{}.Post)
 	v3.GET("/jwt", controllers.RouterController{}.Get)
 	v3.POST("/jwt", controllers.RouterController{}.Post)
-	v3.POST("/wxpush", controllers.WxApiController{}.Notify)
-	v3.POST("/alpush", controllers.AlApiController{}.Notify)
+	v3.POST("/wxnotify", controllers.WxApiController{}.Notify)
+	v3.POST("/alnotify", controllers.AlApiController{}.Notify)
 
 	e.Use(middleware.JWTWithConfig(middleware.JWTConfig{
 		SigningKey: []byte(*jwtEnv),
