@@ -26,8 +26,6 @@ func (RouterController) Post(c echo.Context) error {
 	case "wechat.prepay":
 		return WxApiController{}.Prepay(c)
 
-	case "wechat.notify":
-		return WxApiController{}.Notify(c)
 	case "wechat.prepay.easy":
 		return WxApiController{}.PrepayEasy(c)
 	case "wechat.prepay.openid":
@@ -43,9 +41,6 @@ func (RouterController) Post(c echo.Context) error {
 		return AlApiController{}.Refund(c)
 	case "alipay.prepay":
 		return AlApiController{}.Prepay(c)
-
-	case "alipay.notify":
-		return AlApiController{}.Notify(c)
 
 	default:
 		return ReturnApiFail(c, http.StatusBadRequest, ApiErrorParameter, errors.New("param 'method' is not validate"))

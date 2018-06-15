@@ -231,18 +231,13 @@ func routeParse(c echo.Context) (method, version string, err error) {
 	c.Request().Body.Close()
 	c.Request().Body = ioutil.NopCloser(bytes.NewBuffer(b))
 	var reqDto struct {
-		Method  string `json:"method"`
-		Version string `json:"version"`
+		Method string `json:"method"`
 	}
 	err = json.Unmarshal(b, &reqDto)
 	if err != nil {
 		return
 	}
 	method = reqDto.Method
-	version = reqDto.Version
-	if len(version) == 0 {
-		version = "V2"
-	}
 	return
 }
 
