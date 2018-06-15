@@ -263,7 +263,7 @@ func (d WxApiController) Prepay(c echo.Context) error {
 		2.set ipay united notify_url to reqDto
 	*/
 	reqDto.ReqPrepayDto.Attach = d.setNotifyAttach(c.Request().Context(), reqDto.NotifyUrl, reqDto.Attach, reqDto.EId)
-	reqDto.ReqPrepayDto.NotifyUrl = fmt.Sprintf("%v/%v", factory.ConfigString(c.Request().Context(), "IPAY_HOST"), "notify")
+	reqDto.ReqPrepayDto.NotifyUrl = fmt.Sprintf("%v/%v", factory.ConfigString(c.Request().Context(), "IPAY_HOST"), "wxnotify")
 
 	reqDto.ReqPrepayDto.TimeStart = ChinaDatetime().Format("20060102150405")
 	reqDto.ReqPrepayDto.TimeExpire = ChinaDatetime().Add(10 * time.Minute).Format("20060102150405")
