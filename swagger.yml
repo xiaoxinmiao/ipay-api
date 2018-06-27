@@ -3,9 +3,9 @@ info:
   title: ipay API
   description: |
   version: "2.0.0"
-host: localhost:8080
+host: qa.p2shop.com.cn/ipay
 schemes:
-  - http
+  - https
 produces:
   - application/json
 securityDefinitions:
@@ -14,7 +14,7 @@ securityDefinitions:
     name: Authorization
     in: header
 paths:
-  /v1:
+  /v3:
     post:
       summary: ipay
       description: |
@@ -36,7 +36,7 @@ paths:
           description: error
           schema:
             $ref: '#/definitions/ErrorResult'
-  /v1/jwt:
+  /v3/jwt:
     post:
       summary: ipay
       description: |
